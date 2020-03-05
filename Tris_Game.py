@@ -16,7 +16,7 @@ class GridFrame:
 			self.x, self.y = 0, 0
 		self.frame.grid(kwargs)
 	def onclick(self, event):
-		print("Onclick")
+		#print("Onclick")
 		self.game.set_symbol(self.x, self.y, self.game.active_player)
 
 class Game:
@@ -25,7 +25,7 @@ class Game:
 		self.gameIsRunning = True
 		self.ai = data[2]
 		self.playernames = [data[0],data[1]]
-		print(self.playernames)
+		#print(self.playernames)
 		self.tk = Tk()
 		self.tk.title("Tris Game")
 		self.tk.geometry("400x190")
