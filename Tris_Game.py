@@ -28,7 +28,7 @@ class Game:
 		#print(self.playernames)
 		self.tk = Tk()
 		self.tk.title("Tris Game")
-		self.tk.geometry("400x190")
+		self.tk.geometry("400x200")
 		self.actualgame = [0] * 9 #actual game progress (1 -> x 2 -> o)
 		self.active_player = 1
 		self.grids = []
@@ -40,7 +40,7 @@ class Game:
 		self.plabel = Label(self.tk, text="Actual player: {0}".format(self.playernames[self.active_player-1]), font="Calibri 20 bold")
 		self.plabel.place(x=0, y=120, anchor="nw")#grid(row=3, column=0, columnspan=3)
 		self.timel = Label(self.tk, text="{0:.2f}sec".format(time.time()-self.t1), fg="red", font="Calibri 20 bold")
-		self.timel.place(x=260, y=120, anchor="nw")#.grid(row=3, column=3)
+		self.timel.place(x=0, y=165, anchor="nw")#.grid(row=3, column=3)
 	def mainloop(self):
 		while True:
 			if self.gameIsRunning:
