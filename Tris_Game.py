@@ -51,6 +51,7 @@ class Game:
 	def next_player(self):
 		self.active_player = 2 if self.active_player == 1 else 1 #set the next player
 		self.plabel.config(text="Actual player: {0}".format(self.playernames[self.active_player-1])) #update label
+		self.tk.update()
 	def check_grid(self, x, y):
 		pos = y*3+x
 		return self.actualgame[pos] #returns the item value in self.actualgame using x and y pos
@@ -130,6 +131,8 @@ class Game:
 						self.quit()
 					else:
 						self.active_player = 1
+						self.plabel.config(text="Actual player: {0}".format(self.playernames[self.active_player-1])) #update label
+						self.tk.update()
 				else:
 					raise Exception('No ai is active')
 
