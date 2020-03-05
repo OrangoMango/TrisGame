@@ -5,8 +5,8 @@ import random, time
 class GridFrame:
 	def __init__(self, game):
 		self.game = game
-		self.frame = Frame(game.tk, bd=1, relief="solid")
-		self.id = Label(self.frame, text="    ", font="Calibri 20 bold")
+		self.frame = Frame(game.tk, bd=1)
+		self.id = Label(self.frame, text="    ", font="Calibri 20 bold", relief="solid")
 		self.id.bind("<Button-1>", self.onclick)
 		self.id.pack()
 	def grid(self, **kwargs):
@@ -25,8 +25,10 @@ class Game:
 		self.gameIsRunning = True
 		self.ai = data[2]
 		self.playernames = [data[0],data[1]]
+		print(self.playernames)
 		self.tk = Tk()
 		self.tk.title("Tris Game")
+		self.tk.geometry("400x190")
 		self.actualgame = [0] * 9 #actual game progress (1 -> x 2 -> o)
 		self.active_player = 1
 		self.grids = []
@@ -35,14 +37,14 @@ class Game:
 				f = GridFrame(self)
 				f.grid(column=y, row=x)
 				self.grids.append(f)
-		self.plabel = Label(self.tk, text="Actual player: {0}".format(self.playernames[self.active_player-1]), font="Calibri 25 bold")
-		self.plabel.grid(row=3, column=0, columnspan=3)
-		self.timel = Label(self.tk, text="{0:.2f}sec".format(time.time()-self.t1), font="Calibri 25 bold")
-		self.timel.grid(row=3, column=3)
+		self.plabel = Label(self.tk, text="Actual player: {0}".format(self.playernames[self.active_player-1]), font="Calibri 20 bold")
+		self.plabel.place(x=0, y=120, anchor="nw")#grid(row=3, column=0, columnspan=3)
+		self.timel = Label(self.tk, text="{0:.2f}sec".format(time.time()-self.t1), fg="red", font="Calibri 20 bold")
+		self.timel.place(x=260, y=120, anchor="nw")#.grid(row=3, column=3)
 	def mainloop(self):
 		while True:
 			if self.gameIsRunning:
-				self.timel.config(text="{0:.2f}".format(time.time()-self.t1))
+				self.timel.config(text="{0:.2f}sec".format(time.time()-self.t1))
 				self.tk.update()
 				time.sleep(0.04)
 			else:
@@ -119,6 +121,8 @@ class Game:
 					self.next_player()
 				elif self.ai == True:
 					self.active_player = 2
+					self.plabel.config(text="Actual player: {0}".format(self.playernames[self.active_player-1])) #update label
+					self.tk.update()
 					time.sleep(0.5)
 					self.set_from_number(self.ai_insert(), 2)
 					if self.victory(self.active_player):
