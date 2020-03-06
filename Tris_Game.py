@@ -177,7 +177,7 @@ class Setup:
 
 if __name__ == '__main__':
 	s = Setup()
-	while not s.start:
+	while not s.start: #setup loop
 		time.sleep(0.01)
 		s.tk.update()
 	s.tk.destroy()
