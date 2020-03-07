@@ -127,7 +127,7 @@ class Game:
 					self.set_from_number(self.ai_insert(), 2)
 					if self.victory(self.active_player):
 						self.gameIsRunning = False
-						messagebox.showinfo("Game Over", "AI has won the game")
+						messagebox.showinfo("Game Over", "AI won the game")
 						self.quit()
 					elif self.no_insert():
 						self.gameIsRunning = False
