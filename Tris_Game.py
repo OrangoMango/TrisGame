@@ -143,7 +143,7 @@ class Game:
 class Setup:
 	def __init__(self):
 		self.tk = Tk()
-		self.tk.title("Tris setup wizard")
+		self.tk.title("Tris setup")
 		self.infoboxes = []
 		self.txtvar = StringVar()
 		for x in range(2):
