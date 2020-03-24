@@ -75,7 +75,7 @@ class Game:
 	def set_from_number(self, n, playern): #set symbol from a index
 		y = n // 3
 		x = n % 3
-		self.grids[n].id.config(text="X" if playern == 1 else "O")
+		self.grids[n].id.config(text=" X " if playern == 1 else " O ")
 		self.tk.update()
 		self.tk.update_idletasks()
 		self.actualgame[n] = playern
@@ -104,7 +104,7 @@ class Game:
 	def set_symbol(self, x, y, playern):
 		if self.check_grid(x, y) == 0: #You can only place symbols if the frame doesn't contain another symbol
 			pos = y*3+x
-			self.grids[pos].id.config(text="X" if playern == 1 else "O")
+			self.grids[pos].id.config(text=" X " if playern == 1 else " O ")
 			self.tk.update()
 			self.tk.update_idletasks()
 			self.actualgame[pos] = playern
