@@ -1,4 +1,6 @@
 # TrisGame [![Run on Repl.it](https://repl.it/badge/github/OrangoMango/TrisGame)](https://repl.it/@OrangoMango/TrisGame)
+## You can not beat AI
+### Try web version: [WebVersion](https://repl.it/@OrangoMango/TrisGame) <br>
 Watch and put like to the video on: https://youtu.be/mbwED4Wu4Gs
 <br>
 Subscribe on my channel: https://www.youtube.com/channel/UCrx20bdxcCQhcmL3x0Rqrmw <br><br>
