@@ -95,10 +95,6 @@ class Game:
 			return None
 		return random.choice(empty_corners)
 	def ai_insert(self): #AI
-		if self.actualgame[4] == 0: # Place symbol on center if possible
-			return 4;
-		elif not (self.set_on_random_corner() is None): # Place symbol on a corner if possible
-			return self.set_on_random_corner()
 		empty = [x for x in range(9) if self.actualgame[x] == 0]
 		emn = len(empty)
 		backup = self.actualgame[:]
@@ -114,6 +110,10 @@ class Game:
 			if self.victory(1): #if the player can win
 				self.actualgame = backup[:]
 				return empty[x] #return player index
+		if self.actualgame[4] == 0: # Place symbol on center if possible
+			return 4;
+		elif not (self.set_on_random_corner() is None): # Place symbol on a corner if possible
+			return self.set_on_random_corner()
 		self.actualgame = backup[:]
 		return self.random_set() #if there are no possibilities, return a random index
 	def no_insert(self):
