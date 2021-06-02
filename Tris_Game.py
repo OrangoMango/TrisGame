@@ -110,12 +110,13 @@ class Game:
 			if self.victory(1): #if the player can win
 				self.actualgame = backup[:]
 				return empty[x] #return player index
+		self.actualgame = backup[:]
 		if self.actualgame[4] == 0: # Place symbol on center if possible
 			return 4;
 		elif not (self.set_on_random_corner() is None): # Place symbol on a corner if possible
 			return self.set_on_random_corner()
-		self.actualgame = backup[:]
-		return self.random_set() #if there are no possibilities, return a random index
+		else:
+			return self.random_set() #if there are no possibilities, return a random index
 	def no_insert(self):
 		return not (0 in self.actualgame) #if the board is full
 	def quit(self):
