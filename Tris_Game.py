@@ -94,6 +94,19 @@ class Game:
 		if empty_corners == []:
 			return None
 		return random.choice(empty_corners)
+	def set_on_random_edge(self):
+		empty_edges = []
+		if self.actualgame[1] == 0:
+			empty_edges.append(1)
+		if self.actualgame[3] == 0:
+			empty_edges.append(3)
+		if self.actualgame[5] == 0:
+			empty_edges.append(5)
+		if self.actualgame[7] == 0:
+			empty_edges.append(7)
+		if empty_edges == []:
+			return None
+		return random.choice(empty_edges)
 	def ai_insert(self): #AI
 		empty = [x for x in range(9) if self.actualgame[x] == 0]
 		emn = len(empty)
@@ -113,6 +126,9 @@ class Game:
 		self.actualgame = backup[:]
 		if self.actualgame[4] == 0: # Place symbol on center if possible
 			return 4;
+		elif self.opposite_diagonal(1 if self.active_player == 2 else 2):
+			if not (self.set_on_random_edge() is None):
+				return self.set_on_random_edge()
 		elif not (self.set_on_random_corner() is None): # Place symbol on a corner if possible
 			return self.set_on_random_corner()
 		else:
@@ -121,6 +137,12 @@ class Game:
 		return not (0 in self.actualgame) #if the board is full
 	def quit(self):
 		self.tk.destroy()
+	def opposite_diagonal(self, op):
+		if self.actualgame[4] == self.active_player:
+			if (self.actualgame[0] == op and self.actualgame[8] == op) or (self.actualgame[2] == op and self.actualgame[6] == op):
+				return True
+		else:
+			return False
 	def set_symbol(self, x, y, playern):
 		if self.check_grid(x, y) == 0: #You can only place symbols if the frame doesn't contain another symbol
 			pos = y*3+x
