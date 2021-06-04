@@ -1,3 +1,5 @@
+# Game made by OrangoMango (https://orangomango.github.io)
+
 from tkinter import *
 from tkinter import messagebox
 import random, time
